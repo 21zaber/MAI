@@ -1,7 +1,17 @@
-parents("Bobby Jo Cox", "Bob Cox", "Joann Para").
+parents("Ирина Рудакова", "Василий Рудаков", "Галина Кускова").
+parents("Виктория Опенько", "Роман Опенько", "Наталья Забарина").
+parents("Никита Забарин", "Игорь Забарин", "Ирина Рудакова").
+parents("Светлана Забарина", "Игорь Забарин", "Ирина Рудакова").
+parents("Семен Забарин", "Игорь Забарин", "Ирина Рудакова").
+parents("Игорь Забарин", "Николай Забарин", "Маргарита ").
+parents("Наталья Забарина", "Николай Забарин", "Маргарита ").
+parents("Василий Рудаков", "Петр Рудаков", "Наталья Захарова").
+parents("Галина Кускова", "Алексей Кусков", "Клавдия Похлебкина").
 
 shurin(X, Ans):-
-	parents(_, X, Wife),
-	parents(Wife, A, B),
-	parents(Sh, A, B),
-	parents(_, Sh, _).
+	parents(_, X, Wife), % X has a Wife
+	parents(Wife, A, B), % Wife has a parents
+	parents(Ans, A, B),  % Wife's parents have a son or dauther - Ans
+	parents(_, Ans, _).  % Ans is a man
+
+shurin("Роман Опенько", Ans).
