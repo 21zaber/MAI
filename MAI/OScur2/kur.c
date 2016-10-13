@@ -6,7 +6,6 @@
 
 #define NAME_LEN 35
 #define SIZE 32000
-#define NAME_TYPE char[NAME_LEN]
 
 typedef struct {
     int value;           // item value
