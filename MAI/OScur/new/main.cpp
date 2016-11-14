@@ -6,9 +6,9 @@
 #include <iostream>
 #include <vector>
 
-#define SIMPLE 1
+//#define SIMPLE 
 
-//#define LOGS 1
+//#define LOGS 
 
 using namespace std;
 
@@ -70,7 +70,9 @@ void init(size_t size) {
     head->size = size - sizeof(element_t);
     head->next = NULL;
     head->prev = NULL;
+#ifdef LOGS
     cout << "Initialization: " << size << " bytes" << endl;
+#endif
     allocated = size;
 }
 
@@ -112,6 +114,7 @@ void *alloc(size_t size) {
     }
 
     if (best != NULL) {
+        //cout << best->size - size << endl;
         size_t excess_mem = best->size - size - sizeof(element_t); 
 #ifdef LOGS
         cout << "Allocation:   " << size << " bytes" << endl;
@@ -215,7 +218,9 @@ void destroy() {
     FOREACH(elem, head) {
         elem->used = false;
     }
+#ifdef LOGS
     cout << "Destroying" << endl;
+#endif
     free((void *)head);
 }
 
@@ -261,9 +266,88 @@ void test2(size_t total_mem, uint32_t n, size_t max_block, size_t min_block) {
     destroy();
 }
 
+double *test() {
+   double *res = (double*)calloc(6, sizeof(double));
+#define ITER_NUMBER 10
+   for (int j = 0; j < ITER_NUMBER; ++j) {
+        char fin[10];
+        snprintf(fin, 10, "gtest%d", j);
+        freopen(fin, "r", stdin);
+        size_t total, sum = 0;
+        int n, real_n, a_cnt = 0, d_cnt = 0, f_cnt = 0;
+        cin >> total >> n;
+        real_n = n;
+        init(total);
+        vector<void*> elements;
+        clock_t a_time = 0, d_time = 0, tmp;
+        for (int i = 0; i < n; ++i) {
+            int action, v;
+            cin >> action >> v;
+            if (action == 0) { // 0 - alloc
+                tmp = clock();
+                void *new_elem = alloc(v);
+                a_time += clock() - tmp;
+                ++a_cnt;
+                sum += v;
+                if (new_elem != NULL) {
+                    elements.push_back(new_elem);
+                    memset(new_elem, 0, v);
+                } else {       // allocation failed 
+//                    cout << "FAIL\n";
+                    f_cnt += 1;                    
+                }
+            } else if (action == 1 && elements.size() > 0) { // 1 - dealloc
+                //v = v % elements.size();
+                tmp = clock();
+                dealloc(elements[v]);
+                d_time += clock() - tmp;
+                ++d_cnt;
+                elements.erase(elements.begin() + v);
+            } else if (action == 2) {
+                print_mem_usage();
+                printf("\n");
+                --real_n;
+            }    
+        }  
+        res[0] += a_cnt;
+        res[1] += d_cnt;
+        res[2] += a_time;
+        res[3] += d_time;
+        res[4] += sum; 
+        res[5] += f_cnt; 
+      //cout << "Total operations " << real_n << ", allocations " << a_cnt << ", deallocations " << d_cnt << endl;
+      //if (a_cnt == 0) ++a_cnt;
+      //if (d_cnt == 0) ++d_cnt;
+      //cout << "Avegare size of element " << (uint64_t)(sum / a_cnt) << endl;
+      //cout << "Avegare allocation time " << ((float)a_time / CLOCKS_PER_SEC / a_cnt) << endl;
+      //cout << "Avegare deallocation time " << ((float)d_time / CLOCKS_PER_SEC / d_cnt) << endl;
+        fclose(stdin);
+        destroy();
+        //++(fin[5]);
+    }
+    for (int i = 0; i < 6; ++i) res[i] /= ITER_NUMBER;
+    return res;
+}
+
 
 int main() {
+   cout << sizeof(element_t) << endl;
+   return 0;
     srand (time(NULL));
+#ifdef SIMPLE
+    cout << "Simple allocation" << endl;
+#else
+    cout << "Best allocation" << endl;
+#endif
     //test2(10*1000, 1000, 500, 500);
-    test2(10*1000, 1000, 1000, 100);
+    //test2(10*1000, 1000, 1000, 100);
+    double *res = test();
+
+    cout << "Allocations " << res[0] << ", deallocations " << res[1] << endl;
+    if (res[0] == 0) ++res[0];
+    if (res[1] == 0) ++res[1];
+    cout << "Avegare size of element " << (uint64_t)(res[4] / res[0]) << endl;
+    cout << "Avegare allocation time " << ((float)res[2] / CLOCKS_PER_SEC / res[0]) << endl;
+    cout << "Avegare deallocation time " << ((float)res[3] / CLOCKS_PER_SEC / res[1]) << endl;
+    cout << "Average fails counter " << res[5] << endl;
 }
