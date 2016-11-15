@@ -21,7 +21,6 @@ typedef struct element_s {
 #define FOREACH(I, HEAD) for(I=HEAD;I!=NULL&&I->next!=I;I=I->next)
 #define FOREACH_SAFE(I, HEAD, TMP) for(I=HEAD,TMP=I->next;(I!=NULL)and(TMP=I->next);I=TMP)
 
-
 #define INSERT(NEW, ELEM)           \
 {                                   \
     if (ELEM->next != NULL) {       \
@@ -58,8 +57,6 @@ typedef struct element_s {
 
 element_t *head = NULL;
 size_t allocated = 0;
-
-
 
 void init(size_t size) {
     if (size <= sizeof(element_t)) {
@@ -140,16 +137,6 @@ void *alloc(size_t size) {
     cout << "Allocation:   " << size << " bytes. FAIL" << endl;
 #endif
     return NULL;
-}
-
-void try_to_merge() {
-    element_t *elem, *i;
-    FOREACH_SAFE(elem, head, i) {
-        if (elem->next != NULL and !(elem->used) and !(elem->next->used)) {
-            elem->size += elem->next->size + sizeof(element_t);
-            DELETE(elem->next);
-        }
-    }
 }
 
 void dealloc(void *l) {
