@@ -211,48 +211,6 @@ void destroy() {
     free((void *)head);
 }
 
-void test1() {
-    init(1000);
-    void* t[10];
-    for (int i = 0; i < 10; ++i) {
-        t[i] = alloc(10);
-    }
-    print_list();
-    dealloc(t[3]);
-    print_list();
-    dealloc(t[5]);
-    print_list();
-    dealloc(t[4]);
-    print_list();
-    destroy();
-}
-
-void test2(size_t total_mem, uint32_t n, size_t max_block, size_t min_block) {
-    init(total_mem);
-    vector<void*> elements;
-    for (int i = 0; i < n; ++i) {
-        if ((rand() % 2) == 0 and elements.size() > 0) {
-            int n = rand() % elements.size();
-            dealloc(elements[n]);
-            elements.erase(elements.begin() + n);
-        } else {
-            size_t sz = rand() % (max_block - min_block + 1) + min_block;
-            void *new_elem = alloc(sz);
-            if (new_elem != NULL) {
-                elements.push_back(new_elem);
-                memset(new_elem, 0, sz);
-            }
-        }
-        if (i % (int)(n / 10) == 0){
-            //print_list();
-            //printf("\n");
-            print_mem_usage();
-            printf("\n");
-        }
-    }
-    destroy();
-}
-
 double *test() {
    double *res = (double*)calloc(6, sizeof(double));
 #define ITER_NUMBER 10
