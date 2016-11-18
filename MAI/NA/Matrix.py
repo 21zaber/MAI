@@ -1,5 +1,6 @@
 from copy import deepcopy as copy
 from Vector import Vector
+from random import randint
 
 class Matrix(Vector):
     @staticmethod
@@ -12,6 +13,14 @@ class Matrix(Vector):
         m = Matrix.new(n, n)
         for i in range(n):
             m[i][i] = 1
+        return m
+
+    @staticmethod
+    def rand(n = 1, m = 1):
+        m = Matrix.new(n, m)
+        for v in m:
+            for i in range(len(v)):
+                v[i] = randint(0, 10000) / 1000
         return m
     
     def __str__(self):
@@ -85,3 +94,15 @@ class Matrix(Vector):
 
     def __sub__(a, b):
         return a + (b * -1)
+
+def test():
+    m = Matrix.new(4, 5)
+    m[1] += Vector.E(5)
+    m[1] *= 3
+    print(m)
+    m = Matrix.rand(4, 5)
+    k = Matrix.rand(5, 6)
+    print(m * k)
+
+if __name__ == "__main__":
+    test()
