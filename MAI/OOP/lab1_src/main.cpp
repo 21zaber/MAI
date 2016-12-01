@@ -29,6 +29,6 @@ Figure *get() {
 int main() {
     while (true) {
         Figure *f = get();
-        cout << "Square: " << f->square() << endl;
+        cout << "Square: "; f.print();
     }
 }
