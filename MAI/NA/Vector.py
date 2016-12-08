@@ -1,5 +1,6 @@
 from copy import deepcopy
 from math import sqrt
+from random import randint
 
 def f2s(a):
     MAX_LEN = 7
@@ -26,6 +27,10 @@ class Vector(list):
     def E(n = 1):
         return Vector([1.0 for i in range(n)])
 
+    @staticmethod
+    def rand(n = 1):
+        return Vector([randint(0, 10000) / 1000 for i in range(n)])
+
     def __mul__(a, b):
         if isinstance(b, (int, float)):
             return Vector([i * b for i in a])
@@ -34,13 +39,13 @@ class Vector(list):
                 raise Exception("Different vector leght {} and {}".format(a, b))
             return sum([a[i] * b[i] for i in range(len(a))])
 
-        raise Exceptoin("Wrong argument type {}".format(type(b)))
+        raise Exception("Wrong argument type {}".format(type(b)))
 
-    def __rmul__(a, b):
-        if isinstance(b, (int, float)):
-            return Vector([i * b for i in a])
-
-        raise Exceptoin("Wrong argument type {}".format(type(b)))
+ #  def __rmul__(a, b):
+ #      if isinstance(b, (int, float)):
+ #          return Vector([i * b for i in a])
+ #
+ #      raise Exception("Wrong argument type {}".format(type(b)))
 
     def __truediv__(a, b):
         if isinstance(b, (int, float)):
@@ -54,7 +59,7 @@ class Vector(list):
                 raise Exception("Different vector leght {} and {}".format(a, b))
             return sum([a[i] * b[i] for i in range(len(a))])
 
-        raise Exceptoin("Wrong argument type {}".format(type(b)))
+        raise Exception("Wrong argument type {}".format(type(b)))
 
     def __add__(a, b):
         if isinstance(b, Vector):
@@ -80,12 +85,13 @@ class Vector(list):
         return ' '.join(list(map(f2s, self)))
 
     def __abs__(self):
-        c = 0
-        for i in self:
-            a = abs(i)
-            if a > c:
-                c = a
-        return c
+        return sqrt(sum(i ** 2 for i in self))
+   #    c = 0
+   #    for i in self:
+   #        a = abs(i)
+   #        if a > c:
+   #            c = a
+   #    return c
 
     def read(self, s):
         self = Vector(map(float, s.split()))
