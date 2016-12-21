@@ -20,7 +20,7 @@ class Matrix(Vector):
         m = Matrix.new(n, m)
         for v in m:
             for i in range(len(v)):
-                v[i] = randint(0, 10000) / 1000
+                v[i] = randint(0, 100)# / 1000
         return m
     
     def __str__(self):
@@ -74,7 +74,11 @@ class Matrix(Vector):
                     for k in range(len(a[0])):
                         c[i][j] += a[i][k] * b[k][j]
             return c
+        if type(b) == Vector:
+            t = Matrix([b]).transpose()
+            return a * t
         raise TypeError 
+
     def __add__(a, b):
         if type(b) != type(a):
             raise TypeError
@@ -94,6 +98,16 @@ class Matrix(Vector):
 
     def __sub__(a, b):
         return a + (b * -1)
+
+    def __int__(a):
+        if len(a) == 1 and len(a[0]) == 1:
+            return int(a[0][0])
+        raise TypeError
+
+    def __float__(a):
+        if len(a) == 1 and len(a[0]) == 1:
+            return float(a[0][0])
+        raise TypeError
 
 def test():
     m = Matrix.new(4, 5)
