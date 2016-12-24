@@ -1,0 +1,27 @@
+CREATE TABLE trains(
+        id INT PRIMARY KEY NOT NULL,
+        ar_place CHAR(50),
+        de_place CHAR(50),
+        ar_time REAL,
+        de_time REAL
+);
+
+CREATE TABLE seats(
+        id INT PRIMARY KEY NOT NULL,
+        train_id INT,
+        class_id INT,
+        booked_by INT
+);
+
+CREATE TABLE seat_classes(
+        id INT PRIMARY KEY NOT NULL,
+        cost INT,
+        name CHAR(50)
+);
+
+CREATE TABLE passengers(
+        id INT PRIMARY KEY NOT NULL,
+        fname CHAR(50),
+        sname CHAR(50)
+);
+

@@ -1,0 +1,26 @@
+INSERT INTO trains (id, ar_place, de_place, ar_time, de_time)
+VALUES (1, "Moscow", "St. Petersburg", 1482573643.4679, 1482513643.4679);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (1, 1, 1, NULL);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (2, 1, 1, NULL);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (3, 1, 1, NULL);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (4, 1, 1, NULL);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (5, 1, 2, NULL);
+
+INSERT INTO seats (id, train_id, class_id, booked_by)
+VALUES (6, 1, 2, NULL);
+
+INSERT INTO seat_classes (id, cost, name)
+VALUES (1, 100, "ECONOM");
+
+INSERT INTO seat_classes (id, cost, name)
+VALUES (2, 300, "BUSINESS");
