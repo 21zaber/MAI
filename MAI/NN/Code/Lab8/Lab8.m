@@ -46,46 +46,54 @@ plot(ym(ntrain + nval - 9 : ntrain + nval + ntest - 10), '-r');
 
 
 %%
-
+clear;
+clc;
+%%
 k1 = 0 : 0.025 : 1;
 p1 = sin(4 * pi * k1);
 t1 = -ones(size(p1));
-k2 = 0.01 : 0.025 : 2.98;
-g = @(k)sin(-2 * k .* k + 7 * k) - 0.5 * sin(k);
+k2 = 0.24 : 0.025 : 2.7;
+g = @(k)cos(-3 * k .* k + 5 * k + 10);
 p2 = g(k2);
 t2 = ones(size(p2));
-%%
-R = {2; 1; 5};
+
+R = {2; 4; 4};
 P = [repmat(p1, 1, R{1}), p2, repmat(p1, 1, R{2}), p2, repmat(p1, 1, R{3}), p2];
 T = [repmat(t1, 1, R{1}), t2, repmat(t1, 1, R{2}), t2, repmat(t1, 1, R{3}), t2];
-%%
+
 Pseq = con2seq(P);
 Tseq = con2seq(T);
 %%
-net = distdelaynet({0 : 4, 0 : 4}, 8, 'trainoss');
+net = distdelaynet({0 : 4, 0 : 4}, 12, 'trainoss');
 net.layers{2}.transferFcn = 'tansig';
 net.divideFcn = '';
+net.trainParam.epochs = 100;
+net.trainParam.goal = 0.00001;
 net = configure(net, Pseq, Tseq);
-view(net);
-
+%%
 [Xs, Xi, Ai, Ts] = preparets(net, Pseq, Tseq); 
 net = train(net, Xs, Ts, Xi, Ai);
-Y = sim(net, Xs, Xi);
 %%
+[Xs, Xi, Ai, Ts] = preparets(net, Pseq, Tseq); 
+Y = sim(net, Xs, Xi);
+yy = sign(cell2mat(Y))
 figure;
+
 hold on;
 grid on;
-plot(cell2mat(Tseq), '-b');
-plot([cell2mat(Xi) cell2mat(Y)], '-r');
-figure;
-plot([cell2mat(Xi) cell2mat(Y)-cell2mat(Tseq)]);
 
+plot(cell2mat(Tseq), '-b');
+plot(yy, '-r');
+%%
+
+clear;
+clc;
 %%
 t0 = 0;
 tn = 10;
 dt = 0.01;
 n = (tn - t0) / dt + 1;
-fun = @(k)sin(k.^2) + sin(k).^2;
+fun = @(k)sin(-1 * k .* k + 2);
 fun2 = @(y, u)y ./ (1 + y.^2) + u.^3;
 u = zeros(1, n);
 u(1) = fun(0);
