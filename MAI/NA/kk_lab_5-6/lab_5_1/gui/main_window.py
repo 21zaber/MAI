@@ -31,11 +31,11 @@ class MainWindow(QtGui.QMainWindow):
         self.solutions = None
         self.errors_analytic_numeric = None
 
-        self.scheme_names = ['explicit', 'implicit', 'crank-nicolson']
+        self.scheme_names = ['explicit', 'implicit', 'cr-nic']
         self.scheme_labels = ['Explicit', 'Implicit', 'Crank-Nicolson']
         self.scheme_check_box = [w.checkBox_explicit, w.checkBox_implicit, w.checkBox_crank_nicolson]
 
-        self.app_order_names = ['first_order_two_points', 'second_order_two_points', 'second_order_three_points']
+        self.app_order_names = ['1o2p', '2o2p', '2o3p']
         self.app_order_labels = ['1o2p', '2o2p', '2o3p']
         self.app_order_check_box = [w.checkBox_o1p2, w.checkBox_o2p2, w.checkBox_o2p3]
 
@@ -222,7 +222,7 @@ class MainWindow(QtGui.QMainWindow):
                 self.solutions[i][j] = solver.solve(step_x=self.step_x,
                                                     step_t=self.step_t,
                                                     scheme_type=s,
-                                                    boundary_approximation_func=a)
+                                                    approx_type=a)
                 if solve_progress_dialog.wasCanceled():
                     break
             if solve_progress_dialog.wasCanceled():

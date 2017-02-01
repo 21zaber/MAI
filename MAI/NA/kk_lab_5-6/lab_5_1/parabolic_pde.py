@@ -57,53 +57,64 @@ class ParabolicPDE:
                         'cr-nic': self._cn_solve,
                        }
 
-    def solve(self, scheme_type, approx_type, step_x, step_t):
+    def solve(self, scheme_type='explict', approx_type='1o2p', step_x=0, step_t=0):
         return self.methods[scheme_type](approx_type, step_x, step_t)
 
     def _explicit_solve(self, approx_type, step_x, step_t):
         def approx(pde):
             if approx_type == '1o2p':
-                def f(border, t, u1):
+                def l(t=None, u1=None, u2=None, ul=None):
+                    border = pde.lborder
                     alpha, beta, phi = border.alpha, border.beta, border.phi
 
                     t = step_x * phi(t) - alpha * u1
                     t /= beta * step_x - alpha
                     return t
-
-                def l(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.lborder, t, u1)
                 def r(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.rborder, t, u1)
+                    border = pde.rborder
+                    alpha, beta, phi = border.alpha, border.beta, border.phi
+
+                    t = step_x * phi(t) + alpha * ul
+                    t /= beta * step_x + alpha
+                    return t
 
                 return l, r
             if approx_type == '2o2p':
-                def f(border, t, u1, ul):
+                def l(t=None, u1=None, u2=None, ul=None):
+                    border = pde.lborder
                     a, b, c, f = pde.a, pde.b, pde.c, pde.f
                     alpha, beta, phi = border.alpha, border.beta, border.phi
 
                     t = (a * 2 - b * step_x) * phi(t) - (a * 2 * alpha / step_x) * u1 - \
-                          (alpha * step_x / step_t) * ul - alpha * step_x * f(min_x, t)
+                          (alpha * step_x / step_t) * ul - alpha * step_x * f(self.min_x, t)
                     t /= alpha * (c * step_x - a * 2 / step_x - step_x / step_t) + beta * (a * 2 - b * step_x)
                     return t
-
-                def l(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.lborder, t, u1, ul)
                 def r(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.rborder, t, u1, ul)
+                    border = pde.rborder
+                    a, b, c, f = pde.a, pde.b, pde.c, pde.f
+                    alpha, beta, phi = border.alpha, border.beta, border.phi
+
+                    t = (a * 2 + b * step_x) * phi(t) + (a * 2 * alpha / step_x) * u1 + \
+                          (alpha * step_x / step_t) * ul + alpha * step_x * f(self.min_x, t)
+                    t /= alpha * (-c * step_x + (a * 2) / step_x + step_x / step_t) + beta * (a * 2 + b * step_x)
+                    return t
 
                 return l, r
             if approx_type == '2o3p':
-                def f(border, t, u1, u2):
+                def l(t=None, u1=None, u2=None, ul=None):
+                    border = pde.lborder
                     alpha, beta, phi = border.alpha, border.beta, border.phi
 
                     t = 2 * step_x * phi(t) + alpha * (-4 * u1 + u2)
                     t /= 2 * step_x * beta - 3 * alpha
                     return t
-
-                def l(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.lborder, t, u1, u2)
                 def r(t=None, u1=None, u2=None, ul=None):
-                    return f(pde.rborder, t, u1, u2)
+                    border = pde.rborder
+                    alpha, beta, phi = border.alpha, border.beta, border.phi
+
+                    t = 2 * step_x * phi(t) + alpha * (4 * u1 - u2)
+                    t /= 2 * step_x * beta + 3 * alpha
+                    return t
 
                 return l, r
 
@@ -125,7 +136,7 @@ class ParabolicPDE:
                 u[ti][xi] =(u[ti-1][xi+1] * (k1 + k2) +
                             u[ti-1][xi]   * (1 - 2 * k1 + c * step_t) +
                             u[ti-1][xi-1] * (k1 - k2) +
-                            f(xs[xi], ts[yi-1]) * step_t)
+                            f(xs[xi], ts[ti-1]) * step_t)
             u[ti][0]  = l(ts[ti], u[ti][1], u[ti][2], u[ti-1][0])
             u[ti][-1] = r(ts[ti], u[ti][-2], u[ti][-3], u[ti-1][-1])
 
@@ -220,9 +231,9 @@ class ParabolicPDE:
         for ti in range(1, m):
             v = Vector(size=(n, 1))
             for xi in range(1, n-1):
-                v[x] = u[ti-1][xi] + step_t * f(xs[xi], ts[ti])
+                v[xi] = u[ti-1][xi] + step_t * f(xs[xi], ts[ti])
             cv(v, ts[ti], U, u[ti-1][0], u[ti-1][-1])
-            u[t] = list(TDMA(U, v).solve())
+            u[ti] = list(TDMA(U, v).solve())
 
         return u
 
@@ -320,13 +331,13 @@ class ParabolicPDE:
         for ti in range(1, m):
             v = Vector(size=(n, 1))
             for xi in range(1, n-1):
-                v[x] =(u[ti-1][xi-1] * X +
+                v[xi] =(u[ti-1][xi-1] * X +
                        u[ti-1][xi]   * Y +
                        u[ti-1][xi+1] * Z +
                        (theta - 1) * f(xs[xi], ts[ti]) -
                        theta * f(xs[xi], ts[ti-1]))
             cv(v, ts[ti], U, u[ti-1][0], u[ti-1][-1])
-            u[t] = list(TDMA(U, v).solve())
+            u[ti] = list(TDMA(U, v).solve())
 
         return u
 

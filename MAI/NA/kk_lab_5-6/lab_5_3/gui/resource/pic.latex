@@ -1,0 +1,7 @@
+\left\{\begin{matrix} \frac{\partial^2 U}{\partial x^2} + \frac{\partial^2 U}{\partial y^2} + b_{x} \frac{\partial U}{\partial x} + b_{y} \frac{\partial U}{\partial y} + cU + f(x, y)
+\\ \alpha_{1} \frac{\partial U}{\partial x}(0, y) + \beta_{1} U(0, y) = \varphi_{1}(y)
+\\ \alpha_{2} \frac{\partial U}{\partial x}(l_{x}, y) + \beta_{2} U(l_{x}, y) = \varphi_{2}(y)
+\\ \alpha_{3} \frac{\partial U}{\partial y}(x, 0) + \beta_{3} U(x, 0) = \varphi_{3}(x)
+\\ \alpha_{4} \frac{\partial U}{\partial y}(x, l_{y}) + \beta_{4} U(x, l_{y}) = \varphi_{4}(x)
+
+\end{matrix}\right.

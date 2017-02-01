@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
+    <width>909</width>
     <height>640</height>
    </rect>
   </property>
@@ -185,7 +185,7 @@
                 <double>1000000.000000000000000</double>
                </property>
                <property name="value">
-                <double>3.141592000000000</double>
+                <double>1.570000000000000</double>
                </property>
               </widget>
              </item>
@@ -305,7 +305,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>exp(-2 * t) * (cos(t) + sin(t))</string>
+                <string>exp(-2 * t)</string>
                </property>
               </widget>
              </item>
@@ -331,7 +331,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>-exp(-2 * t) * (cos(t) + sin(t))</string>
+                <string>exp(-2 * t)</string>
                </property>
               </widget>
              </item>
@@ -610,7 +610,7 @@
               <double>1.000000000000000</double>
              </property>
              <property name="value">
-              <double>1.000000000000000</double>
+              <double>0.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -707,7 +707,7 @@
               <double>1000000.000000000000000</double>
              </property>
              <property name="value">
-              <double>1.000000000000000</double>
+              <double>0.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -762,7 +762,7 @@
               <double>1000000.000000000000000</double>
              </property>
              <property name="value">
-              <double>1.000000000000000</double>
+              <double>0.000000000000000</double>
              </property>
             </widget>
            </item>

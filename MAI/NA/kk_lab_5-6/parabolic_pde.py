@@ -57,7 +57,7 @@ class ParabolicPDE:
                         'cr-nic': self._cn_solve,
                        }
 
-    def solve(self, scheme_type, approx_type, step_x, step_t):
+    def solve(self, scheme_type='explict', approx_type='1o2p', step_x=0, step_t=0):
         return self.methods[scheme_type](approx_type, step_x, step_t)
 
     def _explicit_solve(self, approx_type, step_x, step_t):
@@ -82,7 +82,7 @@ class ParabolicPDE:
                     alpha, beta, phi = border.alpha, border.beta, border.phi
 
                     t = (a * 2 - b * step_x) * phi(t) - (a * 2 * alpha / step_x) * u1 - \
-                          (alpha * step_x / step_t) * ul - alpha * step_x * f(min_x, t)
+                          (alpha * step_x / step_t) * ul - alpha * step_x * f(self.min_x, t)
                     t /= alpha * (c * step_x - a * 2 / step_x - step_x / step_t) + beta * (a * 2 - b * step_x)
                     return t
 
@@ -125,7 +125,7 @@ class ParabolicPDE:
                 u[ti][xi] =(u[ti-1][xi+1] * (k1 + k2) +
                             u[ti-1][xi]   * (1 - 2 * k1 + c * step_t) +
                             u[ti-1][xi-1] * (k1 - k2) +
-                            f(xs[xi], ts[yi-1]) * step_t)
+                            f(xs[xi], ts[ti-1]) * step_t)
             u[ti][0]  = l(ts[ti], u[ti][1], u[ti][2], u[ti-1][0])
             u[ti][-1] = r(ts[ti], u[ti][-2], u[ti][-3], u[ti-1][-1])
 
