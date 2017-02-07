@@ -89,8 +89,6 @@ def lanczos(A):
 
     Q = Matrix(q[-k-1:-1]).transpose()
     T = Q.transpose() * A * Q
-    print(Q)
-    print()
     return (Q, T, )
 
 def wprint(m):
@@ -99,7 +97,7 @@ def wprint(m):
         print('{', end='')
         print(*i, sep=', ', end = '')
         print('}', end=', ')
-    print('}', end='')
+    print('}')
         
 
 n = 16
@@ -109,8 +107,9 @@ a = Matrix.rand(n=n, m=n)
 for i in range(n):
     for j in range(i, n):
         a[j][i] = a[i][j]
-
+print("Input matrix: ")
 print(a)
+print("Input matrix in wolphram format:")
 wprint(a)
 print()
 Q, T = lanczos(a)
@@ -119,22 +118,24 @@ vectors *= Q.transpose()# * vectors
 for i in range(len(vectors)):
     if abs(vectors[i][-1]) > 0.001:
         vectors[i] *= 1/vectors[i][-1]
-
+print("Output 3d matrix: ")
 print(T)
 
 t = [(values[i], vectors[i], ) for i in range(len(values))]
 t.sort(key=lambda x: abs(x[0]), reverse=True)
 
 print()
+print("Lanczos eigenvalues: ")
 print(Vector([i[0] for i in t]))
-print()
+print("Lanczos eigenvectors: ")
 print(Matrix([i[1] for i in t]))
 
+print()
 values, vectors = QRalg(a)
 t = [(values[i], vectors[i], ) for i in range(len(values))]
 t.sort(key=lambda x: abs(x[0]), reverse=True)
 
-print()
+print("QR eigenvalues: ")
 print(Vector([i[0] for i in t]))
-print()
+print("QR eigenvectors: ")
 print(Matrix([i[1] for i in t]))
