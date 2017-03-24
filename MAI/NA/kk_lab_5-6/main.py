@@ -1,3 +1,5 @@
+#!/usr/bin/python3.5
+
 import sys
 from PySide import QtGui
 from common.widget_control import get_widget_from_ui

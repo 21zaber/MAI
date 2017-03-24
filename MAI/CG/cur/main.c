@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <jpeglib.h>
 #include <jerror.h>
-#include "noise.h"
 
 #define	RESOLUTION 64
 
@@ -29,8 +28,7 @@ static float z (const float x, const float y, const float t) {
     const float y2 = y + 1;
     const float xx = x2 * x2;
     const float yy = y2 * y2;
-    return ((2 * sinf (20 * sqrtf (xx + yy) - 4 * t) +
-             Noise (10 * x, 10 * y, t, 0)) / 200);
+    return ((2 * sinf (20 * sqrtf (xx + yy) - 4 * t)) / 200);
 }
 // Function to load a Jpeg file.
 int	load_texture (const char * filename, unsigned char * dest, const int format, const unsigned int size) {
@@ -338,8 +336,6 @@ int	main (int narg, char ** args) {
     unsigned char alpha_texture[256 * 256];
     unsigned char caustic_texture[3 * 256 * 256];
     unsigned int i;
-
-    InitNoise ();
 
     /* Creation of the window */
     glutInit (&narg, args);
