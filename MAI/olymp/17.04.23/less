@@ -1,0 +1,370 @@
+n.cpp: In function ‘std::__cxx11::string getcoord(int, int, int)’:
+n.cpp:19:26: error: no matching function for call to ‘std::__cxx11::basic_string<char>::basic_string(char&)’
+         return string(ans);
+                          ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:534:9: note: candidate: template<class _InputIterator> std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(_InputIterator, _InputIterator, const _Alloc&)
+         basic_string(_InputIterator __beg, _InputIterator __end,
+         ^
+/usr/include/c++/5/bits/basic_string.h:534:9: note:   template argument deduction/substitution failed:
+n.cpp:19:26: note:   candidate expects 3 arguments, 1 provided
+         return string(ans);
+                          ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:464:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, _CharT, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(size_type __n, _CharT __c, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:464:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:454:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>] <near match>
+       basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:454:7: note:   conversion of argument 1 would be ill-formed:
+n.cpp:19:26: error: invalid conversion from ‘char’ to ‘const char*’ [-fpermissive]
+         return string(ans);
+                          ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:444:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const _CharT* __s, size_type __n,
+       ^
+/usr/include/c++/5/bits/basic_string.h:444:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:426:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:426:7: note:   candidate expects 4 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:410:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:410:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:398:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const basic_string& __str)
+       ^
+/usr/include/c++/5/bits/basic_string.h:398:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::__cxx11::basic_string<char>&’
+/usr/include/c++/5/bits/basic_string.h:390:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const _Alloc& __a)
+       ^
+/usr/include/c++/5/bits/basic_string.h:390:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::allocator<char>&’
+/usr/include/c++/5/bits/basic_string.h:379:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string() [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string()
+       ^
+/usr/include/c++/5/bits/basic_string.h:379:7: note:   candidate expects 0 arguments, 1 provided
+n.cpp:22:30: error: no matching function for call to ‘std::__cxx11::basic_string<char>::basic_string(char&)’
+             return string(ans) + getcoord(n-1, t + 1 - y, x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:534:9: note: candidate: template<class _InputIterator> std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(_InputIterator, _InputIterator, const _Alloc&)
+         basic_string(_InputIterator __beg, _InputIterator __end,
+         ^
+/usr/include/c++/5/bits/basic_string.h:534:9: note:   template argument deduction/substitution failed:
+n.cpp:22:30: note:   candidate expects 3 arguments, 1 provided
+             return string(ans) + getcoord(n-1, t + 1 - y, x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:464:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, _CharT, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(size_type __n, _CharT __c, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:464:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:454:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>] <near match>
+       basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:454:7: note:   conversion of argument 1 would be ill-formed:
+n.cpp:22:30: error: invalid conversion from ‘char’ to ‘const char*’ [-fpermissive]
+             return string(ans) + getcoord(n-1, t + 1 - y, x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:444:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const _CharT* __s, size_type __n,
+       ^
+/usr/include/c++/5/bits/basic_string.h:444:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:426:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:426:7: note:   candidate expects 4 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:410:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:410:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:398:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const basic_string& __str)
+       ^
+/usr/include/c++/5/bits/basic_string.h:398:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::__cxx11::basic_string<char>&’
+/usr/include/c++/5/bits/basic_string.h:390:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const _Alloc& __a)
+       ^
+/usr/include/c++/5/bits/basic_string.h:390:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::allocator<char>&’
+/usr/include/c++/5/bits/basic_string.h:379:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string() [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string()
+       ^
+/usr/include/c++/5/bits/basic_string.h:379:7: note:   candidate expects 0 arguments, 1 provided
+n.cpp:24:30: error: no matching function for call to ‘std::__cxx11::basic_string<char>::basic_string(char&)’
+             return string(ans) + getcoord(n-1, x, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:534:9: note: candidate: template<class _InputIterator> std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(_InputIterator, _InputIterator, const _Alloc&)
+         basic_string(_InputIterator __beg, _InputIterator __end,
+         ^
+/usr/include/c++/5/bits/basic_string.h:534:9: note:   template argument deduction/substitution failed:
+n.cpp:24:30: note:   candidate expects 3 arguments, 1 provided
+             return string(ans) + getcoord(n-1, x, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:464:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, _CharT, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(size_type __n, _CharT __c, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:464:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:454:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>] <near match>
+       basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:454:7: note:   conversion of argument 1 would be ill-formed:
+n.cpp:24:30: error: invalid conversion from ‘char’ to ‘const char*’ [-fpermissive]
+             return string(ans) + getcoord(n-1, x, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:444:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const _CharT* __s, size_type __n,
+       ^
+/usr/include/c++/5/bits/basic_string.h:444:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:426:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:426:7: note:   candidate expects 4 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:410:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:410:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:398:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const basic_string& __str)
+       ^
+/usr/include/c++/5/bits/basic_string.h:398:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::__cxx11::basic_string<char>&’
+/usr/include/c++/5/bits/basic_string.h:390:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const _Alloc& __a)
+       ^
+/usr/include/c++/5/bits/basic_string.h:390:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::allocator<char>&’
+/usr/include/c++/5/bits/basic_string.h:379:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string() [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string()
+       ^
+/usr/include/c++/5/bits/basic_string.h:379:7: note:   candidate expects 0 arguments, 1 provided
+n.cpp:26:30: error: no matching function for call to ‘std::__cxx11::basic_string<char>::basic_string(char&)’
+             return string(ans) + getcoord(n-1, t + 1 - (y - 3*t), x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:534:9: note: candidate: template<class _InputIterator> std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(_InputIterator, _InputIterator, const _Alloc&)
+         basic_string(_InputIterator __beg, _InputIterator __end,
+         ^
+/usr/include/c++/5/bits/basic_string.h:534:9: note:   template argument deduction/substitution failed:
+n.cpp:26:30: note:   candidate expects 3 arguments, 1 provided
+             return string(ans) + getcoord(n-1, t + 1 - (y - 3*t), x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:464:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, _CharT, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(size_type __n, _CharT __c, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:464:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:454:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>] <near match>
+       basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:454:7: note:   conversion of argument 1 would be ill-formed:
+n.cpp:26:30: error: invalid conversion from ‘char’ to ‘const char*’ [-fpermissive]
+             return string(ans) + getcoord(n-1, t + 1 - (y - 3*t), x);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:444:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const _CharT* __s, size_type __n,
+       ^
+/usr/include/c++/5/bits/basic_string.h:444:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:426:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:426:7: note:   candidate expects 4 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:410:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:410:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:398:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const basic_string& __str)
+       ^
+/usr/include/c++/5/bits/basic_string.h:398:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::__cxx11::basic_string<char>&’
+/usr/include/c++/5/bits/basic_string.h:390:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const _Alloc& __a)
+       ^
+/usr/include/c++/5/bits/basic_string.h:390:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::allocator<char>&’
+/usr/include/c++/5/bits/basic_string.h:379:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string() [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string()
+       ^
+/usr/include/c++/5/bits/basic_string.h:379:7: note:   candidate expects 0 arguments, 1 provided
+n.cpp:28:30: error: no matching function for call to ‘std::__cxx11::basic_string<char>::basic_string(char&)’
+             return string(ans) + getcoord(n-1, x - t, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:534:9: note: candidate: template<class _InputIterator> std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(_InputIterator, _InputIterator, const _Alloc&)
+         basic_string(_InputIterator __beg, _InputIterator __end,
+         ^
+/usr/include/c++/5/bits/basic_string.h:534:9: note:   template argument deduction/substitution failed:
+n.cpp:28:30: note:   candidate expects 3 arguments, 1 provided
+             return string(ans) + getcoord(n-1, x - t, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:464:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, _CharT, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(size_type __n, _CharT __c, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:464:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:454:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>] <near match>
+       basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
+       ^
+/usr/include/c++/5/bits/basic_string.h:454:7: note:   conversion of argument 1 would be ill-formed:
+n.cpp:28:30: error: invalid conversion from ‘char’ to ‘const char*’ [-fpermissive]
+             return string(ans) + getcoord(n-1, x - t, y - t);
+                              ^
+In file included from /usr/include/c++/5/string:52:0,
+                 from /usr/include/c++/5/bits/locale_classes.h:40,
+                 from /usr/include/c++/5/bits/ios_base.h:41,
+                 from /usr/include/c++/5/ios:42,
+                 from /usr/include/c++/5/ostream:38,
+                 from /usr/include/c++/5/iostream:39,
+                 from n.cpp:1:
+/usr/include/c++/5/bits/basic_string.h:444:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const _CharT* __s, size_type __n,
+       ^
+/usr/include/c++/5/bits/basic_string.h:444:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:426:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:426:7: note:   candidate expects 4 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:410:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>; std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::size_type = long unsigned int]
+       basic_string(const basic_string& __str, size_type __pos,
+       ^
+/usr/include/c++/5/bits/basic_string.h:410:7: note:   candidate expects 3 arguments, 1 provided
+/usr/include/c++/5/bits/basic_string.h:398:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const basic_string& __str)
+       ^
+/usr/include/c++/5/bits/basic_string.h:398:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::__cxx11::basic_string<char>&’
+/usr/include/c++/5/bits/basic_string.h:390:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string(const _Alloc&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string(const _Alloc& __a)
+       ^
+/usr/include/c++/5/bits/basic_string.h:390:7: note:   no known conversion for argument 1 from ‘char’ to ‘const std::allocator<char>&’
+/usr/include/c++/5/bits/basic_string.h:379:7: note: candidate: std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::basic_string() [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]
+       basic_string()
+       ^
+/usr/include/c++/5/bits/basic_string.h:379:7: note:   candidate expects 0 arguments, 1 provided
+n.cpp: At global scope:
+n.cpp:32:10: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+ int main {
+          ^
+n.cpp:33:5: error: expected primary-expression before ‘int’
+     int n,x,y;
+     ^
+n.cpp:33:5: error: expected ‘}’ before ‘int’
+n.cpp:33:5: error: expected ‘,’ or ‘;’ before ‘int’
+n.cpp:34:5: error: ‘cin’ does not name a type
+     cin >> n >> x >> y;
+     ^
+n.cpp:37:28: error: ‘n’ was not declared in this scope
+     string lstc = getcoord(n, x, y);
+                            ^
+n.cpp:37:31: error: ‘x’ was not declared in this scope
+     string lstc = getcoord(n, x, y);
+                               ^
+n.cpp:37:34: error: ‘y’ was not declared in this scope
+     string lstc = getcoord(n, x, y);
+                                  ^
+n.cpp:40:5: error: ‘cin’ does not name a type
+     cin >> steps;
+     ^
+n.cpp:42:5: error: expected unqualified-id before ‘for’
+     for (int i = 0; i < steps.size(); ++i){
+     ^
+n.cpp:42:21: error: ‘i’ does not name a type
+     for (int i = 0; i < steps.size(); ++i){
+                     ^
+n.cpp:42:39: error: expected unqualified-id before ‘++’ token
+     for (int i = 0; i < steps.size(); ++i){
+                                       ^
+n.cpp:64:5: error: ‘cout’ does not name a type
+     cout << ans;
+     ^
+n.cpp:65:1: error: expected declaration before ‘}’ token
+ }
+ ^

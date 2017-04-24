@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1491735918 source:/home/zaber/MAI/MAI/olymp/team_fest/Project/main2.cpp
+
+1491741844 source:/home/zaber/MAI/MAI/olymp/team_fest/Project/main.cpp
+	<iostream>
+	<queue>
+	<map>
+	<algorithm>
+
