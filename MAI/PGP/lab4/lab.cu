@@ -92,6 +92,17 @@ __global__ void k_swapcolumns(double *dm, const uint32_t n, const uint32_t fr, c
 __global__ void k_lucol(double *dm, const uint32_t n, const uint32_t i) {
     int idx = blockDim.x * blockIdx.x + threadIdx.x;
     int offsetx = blockDim.x * gridDim.x;
+<<<<<<< HEAD
+    int idy = blockDim.y * blockIdx.y + threadIdx.y;
+    int offsety = blockDim.y * gridDim.y;
+
+    double d = get(dlu, i, i); 
+
+    for (int k = idy+i+1; k < n; k += offsety) {
+
+        for(int j = idx+i+1; j < n; j += offsetx) {                  
+            getu(dlu, j, k) -= getl(dlu, j, i) / d * gett(dlu, i, k);
+=======
 
     for(int j = idx; j < n; j += offsetx) {
         if (j <= i) continue;
@@ -101,6 +112,7 @@ __global__ void k_lucol(double *dm, const uint32_t n, const uint32_t i) {
         }
         for (int k = 0; k < i; ++k) {
             getl(dm, j, i) -= getl(dm, j, k) * getu(dm, k, i);
+>>>>>>> parent of a5cf176... added PGP and MM reports
         }
         getl(dm, j, i) /= get(dm, i, i);
     }
@@ -130,10 +142,21 @@ int main() {
         // find a max in row(columns) using thrust
         thrust::device_ptr<double> dp = thrust::device_pointer_cast(dm + r*n + r);
         thrust::device_ptr<double> mp = thrust::max_element(dp, dp + n - r, cmpr());
+<<<<<<< HEAD
+        int to = r + mp - dp, t;
+        t = to;
+        while (swaps[t] != -1) t = swaps[t];
+        swaps[t] = r;
+        k_swapcolumns<<<256, 256>>>(dlu, n, r, to); CSC(cudaGetLastError());
+        k_lucol<<<dim3(16, 16), dim3(16, 16)>>>(dlu, n, r); CSC(cudaGetLastError());
+        // calc L
+        //for (int i = r+1; i < n; ++i) gett(hm, r, i) /= gett(hm, r, r);
+=======
         int to = r + mp - dp, tmp;
         tmp = swaps[to], swaps[to] = swaps[r], swaps[r] = tmp;
         k_swapcolumns<<<256, 256>>>(dm, n, r, to);
         k_lucol<<<256, 256>>>(dm, n, r);
+>>>>>>> parent of a5cf176... added PGP and MM reports
     }
     
     CSC(cudaMemcpy(hm, dm, sizeof(double) * size, cudaMemcpyDeviceToHost));

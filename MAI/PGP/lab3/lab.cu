@@ -141,7 +141,6 @@ __device__ double mahalanobis(const pixel p, int ci) {
 	return res;
 }
 
-
 __device__ void classify(pixel &p, int cnum) {
 	double mx = mahalanobis(p, 0);
 	p.w = 0;

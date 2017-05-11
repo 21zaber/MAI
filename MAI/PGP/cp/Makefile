@@ -1,0 +1,13 @@
+
+
+GCC= nvcc
+FLAGS= -lpthread -lGL -lGLU -lglut -lGLEW
+FILES= cp.cu
+TARGET= cp
+LOG= log
+
+all:
+	${GCC} ${FLAGS} ${FILES} -o ${TARGET}
+
+run:
+	./${TARGET} > ${LOG}
