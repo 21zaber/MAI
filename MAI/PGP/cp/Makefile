@@ -1,13 +1,19 @@
+OBJECTS = gpu.o cp.o
 
-
-GCC= nvcc
-FLAGS= -lpthread -lGL -lGLU -lglut -lGLEW
-FILES= cp.cu
+CC= nvcc
+FLAGS=  -x cu -arch=sm_20 -I. -dc -lpthread -lGL -lGLU -lglut -lGLEW
+FILES= cp.cu gpu.cu
 TARGET= cp
 LOG= log
 
-all:
-	${GCC} ${FLAGS} ${FILES} -o ${TARGET}
+%.o: %.cu
+	${CC} ${FLAGS} $< -o $@
+
+all: $(OBJECTS)
+	${CC} -arch=sm_20 $(OBJECTS) -o ${TARGET}
+
+clean:
+	rm -f *.o ${TARGET} ${LOG}
 
 run:
 	./${TARGET} > ${LOG}
